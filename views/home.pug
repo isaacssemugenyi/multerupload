@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title Home
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    body
+        //-Form for client input of image and text 
+        form(action="/", method="POST", enctype="multipart/form-data")
+            input(type="text", name="fileName")
+            br
+            br
+            input(type="file", name="filePath")
+            button(type="submit") Submit
+
+        //- Iteration through documents queried from DB and displaying them on screen
+        each upload in uploads
+            br
+            div
+                img(src=upload.filePath, alt="", style="width:300px; height: 200px;")
+                ul
+                    li= upload.fileName
+                div
+                    //- Here we point href to the delete route
+                    a(href="/delete/"+upload.id) Delete
